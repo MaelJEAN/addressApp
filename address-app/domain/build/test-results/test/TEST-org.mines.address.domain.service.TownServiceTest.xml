@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.mines.address.domain.service.TownServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-04-11T17:22:39" hostname="ORACLEDELL" time="0.069">
+<testsuite name="org.mines.address.domain.service.TownServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-04-12T12:29:31" hostname="DESKTOP-TG14Q8S" time="0.111">
   <properties/>
-  <testcase name="shouldSaveATown()" classname="org.mines.address.domain.service.TownServiceTest" time="0.044"/>
-  <testcase name="shouldRemoveATown()" classname="org.mines.address.domain.service.TownServiceTest" time="0.017"/>
-  <testcase name="shouldNotSaveAnExistingTown()" classname="org.mines.address.domain.service.TownServiceTest" time="0.003"/>
-  <testcase name="shouldNotSaveTownWithEmptyName()" classname="org.mines.address.domain.service.TownServiceTest" time="0.002"/>
+  <testcase name="shouldSaveATown()" classname="org.mines.address.domain.service.TownServiceTest" time="0.071"/>
+  <testcase name="shouldRemoveATown()" classname="org.mines.address.domain.service.TownServiceTest" time="0.024"/>
+  <testcase name="shouldNotSaveAnExistingTown()" classname="org.mines.address.domain.service.TownServiceTest" time="0.005"/>
+  <testcase name="shouldNotSaveTownWithEmptyName()" classname="org.mines.address.domain.service.TownServiceTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

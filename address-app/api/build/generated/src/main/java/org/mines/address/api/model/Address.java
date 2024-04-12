@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * Address
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-04-11T19:22:10.926784500+02:00[Europe/Paris]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-04-12T14:29:23.944830900+02:00[Europe/Paris]")
 public class Address {
 
   private Long number;

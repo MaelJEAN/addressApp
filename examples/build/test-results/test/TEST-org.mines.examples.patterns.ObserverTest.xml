@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.mines.examples.patterns.ObserverTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-11T17:22:05" hostname="ORACLEDELL" time="0.002">
+<testsuite name="org.mines.examples.patterns.ObserverTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-12T12:29:22" hostname="DESKTOP-TG14Q8S" time="0.003">
   <properties/>
-  <testcase name="shouldObserve()" classname="org.mines.examples.patterns.ObserverTest" time="0.002"/>
+  <testcase name="shouldObserve()" classname="org.mines.examples.patterns.ObserverTest" time="0.003"/>
   <system-out><![CDATA[Do something useful
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

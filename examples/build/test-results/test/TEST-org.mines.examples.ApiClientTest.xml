@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.mines.examples.ApiClientTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2024-04-11T17:22:05" hostname="ORACLEDELL" time="0.001">
+<testsuite name="org.mines.examples.ApiClientTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2024-04-12T12:29:22" hostname="DESKTOP-TG14Q8S" time="0.0">
   <properties/>
-  <testcase name="shouldCallApiClient()" classname="org.mines.examples.ApiClientTest" time="0.001">
+  <testcase name="shouldCallApiClient()" classname="org.mines.examples.ApiClientTest" time="0.0">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>
