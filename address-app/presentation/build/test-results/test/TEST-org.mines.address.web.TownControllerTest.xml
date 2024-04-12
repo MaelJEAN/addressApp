@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.mines.address.web.TownControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-04-11T17:22:54" hostname="ORACLEDELL" time="0.391">
+  <properties/>
+  <testcase name="shouldNotGetInstanceData()" classname="org.mines.address.web.TownControllerTest" time="0.263"/>
+  <testcase name="shouldGetATown()" classname="org.mines.address.web.TownControllerTest" time="0.125"/>
+  <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.4)
+
+2024-04-11T19:22:51.689+02:00  INFO 34736 --- [    Test worker] o.mines.address.web.TownControllerTest   : Starting TownControllerTest using Java 21.0.2 with PID 34736 (started by mael2 in C:\Users\mael2\Downloads\Cours\$8\Bonnes pratiques\addressApp\address-app\presentation)
+2024-04-11T19:22:51.693+02:00  INFO 34736 --- [    Test worker] o.mines.address.web.TownControllerTest   : No active profile set, falling back to 1 default profile: "default"
+2024-04-11T19:22:54.243+02:00  INFO 34736 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-04-11T19:22:54.243+02:00  INFO 34736 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-04-11T19:22:54.248+02:00  INFO 34736 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2024-04-11T19:22:54.320+02:00  INFO 34736 --- [    Test worker] o.mines.address.web.TownControllerTest   : Started TownControllerTest in 3.067 seconds (process running for 4.914)
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\mael2\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.11\f9cb566608fbac6bc7bf54901a7aa11543a989ee\byte-buddy-agent-1.14.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

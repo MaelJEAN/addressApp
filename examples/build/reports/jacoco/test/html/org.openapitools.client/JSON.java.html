@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JSON.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">examples</a> &gt; <a href="index.source.html" class="el_package">org.openapitools.client</a> &gt; <span class="el_source">JSON.java</span></div><h1>JSON.java</h1><pre class="source lang-java linenums">package org.openapitools.client;
+
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import org.openapitools.jackson.nullable.JsonNullableModule;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.openapitools.client.model.*;
+
+import java.text.DateFormat;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+@javax.annotation.Generated(value = &quot;org.openapitools.codegen.languages.JavaClientCodegen&quot;, date = &quot;2024-04-11T19:21:35.450838400+02:00[Europe/Paris]&quot;)
+public class JSON {
+  private ObjectMapper mapper;
+
+<span class="nc" id="L20">  public JSON() {</span>
+<span class="nc" id="L21">    mapper = JsonMapper.builder()</span>
+<span class="nc" id="L22">        .serializationInclusion(JsonInclude.Include.NON_NULL)</span>
+<span class="nc" id="L23">        .disable(MapperFeature.ALLOW_COERCION_OF_SCALARS)</span>
+<span class="nc" id="L24">        .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)</span>
+<span class="nc" id="L25">        .enable(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE)</span>
+<span class="nc" id="L26">        .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)</span>
+<span class="nc" id="L27">        .enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING)</span>
+<span class="nc" id="L28">        .enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING)</span>
+<span class="nc" id="L29">        .defaultDateFormat(new RFC3339DateFormat())</span>
+<span class="nc" id="L30">        .addModule(new JavaTimeModule())</span>
+<span class="nc" id="L31">        .build();</span>
+<span class="nc" id="L32">    JsonNullableModule jnm = new JsonNullableModule();</span>
+<span class="nc" id="L33">    mapper.registerModule(jnm);</span>
+<span class="nc" id="L34">  }</span>
+
+  /**
+   * Set the date format for JSON (de)serialization with Date properties.
+   *
+   * @param dateFormat Date format
+   */
+  public void setDateFormat(DateFormat dateFormat) {
+<span class="nc" id="L42">    mapper.setDateFormat(dateFormat);</span>
+<span class="nc" id="L43">  }</span>
+
+  /**
+   * Get the object mapper
+   *
+   * @return object mapper
+   */
+<span class="nc" id="L50">  public ObjectMapper getMapper() { return mapper; }</span>
+
+  /**
+   * Returns the target model class that should be used to deserialize the input data.
+   * The discriminator mappings are used to determine the target model class.
+   *
+   * @param node The input data.
+   * @param modelClass The class that contains the discriminator mappings.
+   *
+   * @return the target model class.
+   */
+  public static Class&lt;?&gt; getClassForElement(JsonNode node, Class&lt;?&gt; modelClass) {
+<span class="nc" id="L62">    ClassDiscriminatorMapping cdm = modelDiscriminators.get(modelClass);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">    if (cdm != null) {</span>
+<span class="nc" id="L64">      return cdm.getClassForElement(node, new HashSet&lt;Class&lt;?&gt;&gt;());</span>
+    }
+<span class="nc" id="L66">    return null;</span>
+  }
+
+  /**
+   * Helper class to register the discriminator mappings.
+   */
+  private static class ClassDiscriminatorMapping {
+    // The model class name.
+    Class&lt;?&gt; modelClass;
+    // The name of the discriminator property.
+    String discriminatorName;
+    // The discriminator mappings for a model class.
+    Map&lt;String, Class&lt;?&gt;&gt; discriminatorMappings;
+
+    // Constructs a new class discriminator.
+<span class="nc" id="L81">    ClassDiscriminatorMapping(Class&lt;?&gt; cls, String propertyName, Map&lt;String, Class&lt;?&gt;&gt; mappings) {</span>
+<span class="nc" id="L82">      modelClass = cls;</span>
+<span class="nc" id="L83">      discriminatorName = propertyName;</span>
+<span class="nc" id="L84">      discriminatorMappings = new HashMap&lt;String, Class&lt;?&gt;&gt;();</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">      if (mappings != null) {</span>
+<span class="nc" id="L86">        discriminatorMappings.putAll(mappings);</span>
+      }
+<span class="nc" id="L88">    }</span>
+
+    // Return the name of the discriminator property for this model class.
+    String getDiscriminatorPropertyName() {
+<span class="nc" id="L92">      return discriminatorName;</span>
+    }
+
+    // Return the discriminator value or null if the discriminator is not
+    // present in the payload.
+    String getDiscriminatorValue(JsonNode node) {
+      // Determine the value of the discriminator property in the input data.
+<span class="nc bnc" id="L99" title="All 2 branches missed.">      if (discriminatorName != null) {</span>
+        // Get the value of the discriminator property, if present in the input payload.
+<span class="nc" id="L101">        node = node.get(discriminatorName);</span>
+<span class="nc bnc" id="L102" title="All 4 branches missed.">        if (node != null &amp;&amp; node.isValueNode()) {</span>
+<span class="nc" id="L103">          String discrValue = node.asText();</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">          if (discrValue != null) {</span>
+<span class="nc" id="L105">            return discrValue;</span>
+          }
+        }
+      }
+<span class="nc" id="L109">      return null;</span>
+    }
+
+    /**
+     * Returns the target model class that should be used to deserialize the input data.
+     * This function can be invoked for anyOf/oneOf composed models with discriminator mappings.
+     * The discriminator mappings are used to determine the target model class.
+     *
+     * @param node The input data.
+     * @param visitedClasses The set of classes that have already been visited.
+     *
+     * @return the target model class.
+     */
+    Class&lt;?&gt; getClassForElement(JsonNode node, Set&lt;Class&lt;?&gt;&gt; visitedClasses) {
+<span class="nc bnc" id="L123" title="All 2 branches missed.">      if (visitedClasses.contains(modelClass)) {</span>
+        // Class has already been visited.
+<span class="nc" id="L125">        return null;</span>
+      }
+      // Determine the value of the discriminator property in the input data.
+<span class="nc" id="L128">      String discrValue = getDiscriminatorValue(node);</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">      if (discrValue == null) {</span>
+<span class="nc" id="L130">        return null;</span>
+      }
+<span class="nc" id="L132">      Class&lt;?&gt; cls = discriminatorMappings.get(discrValue);</span>
+      // It may not be sufficient to return this cls directly because that target class
+      // may itself be a composed schema, possibly with its own discriminator.
+<span class="nc" id="L135">      visitedClasses.add(modelClass);</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">      for (Class&lt;?&gt; childClass : discriminatorMappings.values()) {</span>
+<span class="nc" id="L137">        ClassDiscriminatorMapping childCdm = modelDiscriminators.get(childClass);</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        if (childCdm == null) {</span>
+<span class="nc" id="L139">          continue;</span>
+        }
+<span class="nc bnc" id="L141" title="All 2 branches missed.">        if (!discriminatorName.equals(childCdm.discriminatorName)) {</span>
+<span class="nc" id="L142">          discrValue = getDiscriminatorValue(node);</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">          if (discrValue == null) {</span>
+<span class="nc" id="L144">            continue;</span>
+          }
+        }
+<span class="nc bnc" id="L147" title="All 2 branches missed.">        if (childCdm != null) {</span>
+          // Recursively traverse the discriminator mappings.
+<span class="nc" id="L149">          Class&lt;?&gt; childDiscr = childCdm.getClassForElement(node, visitedClasses);</span>
+<span class="nc bnc" id="L150" title="All 2 branches missed.">          if (childDiscr != null) {</span>
+<span class="nc" id="L151">            return childDiscr;</span>
+          }
+        }
+<span class="nc" id="L154">      }</span>
+<span class="nc" id="L155">      return cls;</span>
+    }
+  }
+
+  /**
+   * Returns true if inst is an instance of modelClass in the OpenAPI model hierarchy.
+   *
+   * The Java class hierarchy is not implemented the same way as the OpenAPI model hierarchy,
+   * so it's not possible to use the instanceof keyword.
+   *
+   * @param modelClass A OpenAPI model class.
+   * @param inst The instance object.
+   * @param visitedClasses The set of classes that have already been visited.
+   *
+   * @return true if inst is an instance of modelClass in the OpenAPI model hierarchy.
+   */
+  public static boolean isInstanceOf(Class&lt;?&gt; modelClass, Object inst, Set&lt;Class&lt;?&gt;&gt; visitedClasses) {
+<span class="nc bnc" id="L172" title="All 2 branches missed.">    if (modelClass.isInstance(inst)) {</span>
+      // This handles the 'allOf' use case with single parent inheritance.
+<span class="nc" id="L174">      return true;</span>
+    }
+<span class="nc bnc" id="L176" title="All 2 branches missed.">    if (visitedClasses.contains(modelClass)) {</span>
+      // This is to prevent infinite recursion when the composed schemas have
+      // a circular dependency.
+<span class="nc" id="L179">      return false;</span>
+    }
+<span class="nc" id="L181">    visitedClasses.add(modelClass);</span>
+
+    // Traverse the oneOf/anyOf composed schemas.
+<span class="nc" id="L184">    Map&lt;String, Class&lt;?&gt;&gt; descendants = modelDescendants.get(modelClass);</span>
+<span class="nc bnc" id="L185" title="All 2 branches missed.">    if (descendants != null) {</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">      for (Class&lt;?&gt; childType : descendants.values()) {</span>
+<span class="nc bnc" id="L187" title="All 2 branches missed.">        if (isInstanceOf(childType, inst, visitedClasses)) {</span>
+<span class="nc" id="L188">          return true;</span>
+        }
+<span class="nc" id="L190">      }</span>
+    }
+<span class="nc" id="L192">    return false;</span>
+  }
+
+  /**
+   * A map of discriminators for all model classes.
+   */
+<span class="nc" id="L198">  private static Map&lt;Class&lt;?&gt;, ClassDiscriminatorMapping&gt; modelDiscriminators = new HashMap&lt;&gt;();</span>
+
+  /**
+   * A map of oneOf/anyOf descendants for each model class.
+   */
+<span class="nc" id="L203">  private static Map&lt;Class&lt;?&gt;, Map&lt;String, Class&lt;?&gt;&gt;&gt; modelDescendants = new HashMap&lt;&gt;();</span>
+
+  /**
+    * Register a model class discriminator.
+    *
+    * @param modelClass the model class
+    * @param discriminatorPropertyName the name of the discriminator property
+    * @param mappings a map with the discriminator mappings.
+    */
+  public static void registerDiscriminator(Class&lt;?&gt; modelClass, String discriminatorPropertyName, Map&lt;String, Class&lt;?&gt;&gt; mappings) {
+<span class="nc" id="L213">    ClassDiscriminatorMapping m = new ClassDiscriminatorMapping(modelClass, discriminatorPropertyName, mappings);</span>
+<span class="nc" id="L214">    modelDiscriminators.put(modelClass, m);</span>
+<span class="nc" id="L215">  }</span>
+
+  /**
+    * Register the oneOf/anyOf descendants of the modelClass.
+    *
+    * @param modelClass the model class
+    * @param descendants a map of oneOf/anyOf descendants.
+    */
+  public static void registerDescendants(Class&lt;?&gt; modelClass, Map&lt;String, Class&lt;?&gt;&gt; descendants) {
+<span class="nc" id="L224">    modelDescendants.put(modelClass, descendants);</span>
+<span class="nc" id="L225">  }</span>
+
+  private static JSON json;
+
+  static {
+<span class="nc" id="L230">    json = new JSON();</span>
+<span class="nc" id="L231">  }</span>
+
+  /**
+    * Get the default JSON instance.
+    *
+    * @return the default JSON instance
+    */
+  public static JSON getDefault() {
+<span class="nc" id="L239">    return json;</span>
+  }
+
+  /**
+    * Set the default JSON instance.
+    *
+    * @param json JSON instance to be used
+    */
+  public static void setDefault(JSON json) {
+<span class="nc" id="L248">    JSON.json = json;</span>
+<span class="nc" id="L249">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

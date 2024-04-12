@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info:
+  license:
+    name: MIT
+  title: Mines - address app
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+paths:
+  /town:
+    get:
+      operationId: listTowns
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Town'
+                type: array
+          description: An array of towns
+      summary: List all towns
+      tags:
+      - town
+      x-accepts: application/json
+    post:
+      operationId: createTown
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Town'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Town'
+          description: Null response
+      summary: Create a town
+      tags:
+      - town
+      x-content-type: application/json
+      x-accepts: application/json
+    put:
+      operationId: updateTown
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Town'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Town'
+          description: Null response
+      summary: Update a town
+      tags:
+      - town
+      x-content-type: application/json
+      x-accepts: application/json
+  /town/{id}:
+    delete:
+      operationId: deleteTown
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          content:
+            application/json:
+              schema:
+                description: ID of the deleted entity.
+                type: string
+          description: Town has been deleted.
+      summary: Delete a town.
+      tags:
+      - town
+      x-accepts: application/json
+    get:
+      operationId: getTown
+      parameters:
+      - description: The id of the town to retrieve
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Town'
+          description: Expected response to a valid request
+      summary: Info for a specific town
+      tags:
+      - town
+      x-accepts: application/json
+  /town/{id}/address:
+    get:
+      operationId: listAddresses
+      parameters:
+      - description: The town id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Address'
+                type: array
+          description: Expected response to a valid request
+      summary: Retrieves all addresses for a given town
+      tags:
+      - address
+      x-accepts: application/json
+    post:
+      operationId: createAddresses
+      parameters:
+      - description: The town id
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: Expected response to a valid request
+      summary: Creates an address
+      tags:
+      - address
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    Town:
+      example:
+        name: name
+        postCode: postCode
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        postCode:
+          type: string
+      required:
+      - name
+      - postCode
+    Address:
+      example:
+        number: 0
+        street: street
+      properties:
+        number:
+          format: int64
+          type: integer
+        street:
+          type: string
+      required:
+      - number
+      - street
+

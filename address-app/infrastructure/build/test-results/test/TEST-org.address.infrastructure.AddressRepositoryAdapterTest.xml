@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.address.infrastructure.AddressRepositoryAdapterTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-04-11T17:22:47" hostname="ORACLEDELL" time="0.131">
+  <properties/>
+  <testcase name="shouldInsertAnAddressWithAnUnknownTown()" classname="org.address.infrastructure.AddressRepositoryAdapterTest" time="0.101"/>
+  <testcase name="shouldInsertAnAddressWithAValidTown()" classname="org.address.infrastructure.AddressRepositoryAdapterTest" time="0.028"/>
+  <system-out><![CDATA[Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+19:22:44,626 |-INFO in ch.qos.logback.classic.LoggerContext[default] - This is logback-classic version 1.4.14
+19:22:44,629 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - Here is a list of configurators discovered as a service, by rank: 
+19:22:44,629 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 -   org.springframework.boot.logging.logback.RootLogLevelConfigurator
+19:22:44,629 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - They will be invoked in order until ExecutionStatus.DO_NOT_INVOKE_NEXT_IF_ANY is returned.
+19:22:44,631 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - Constructed configurator of type class org.springframework.boot.logging.logback.RootLogLevelConfigurator
+19:22:44,638 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - org.springframework.boot.logging.logback.RootLogLevelConfigurator.configure() call lasted 0 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+19:22:44,638 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - Trying to configure with ch.qos.logback.classic.joran.SerializedModelConfigurator
+19:22:44,640 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - Constructed configurator of type class ch.qos.logback.classic.joran.SerializedModelConfigurator
+19:22:44,643 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.scmo]
+19:22:44,643 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.scmo]
+19:22:44,643 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - ch.qos.logback.classic.joran.SerializedModelConfigurator.configure() call lasted 3 milliseconds. ExecutionStatus=INVOKE_NEXT_IF_ANY
+19:22:44,643 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - Trying to configure with ch.qos.logback.classic.util.DefaultJoranConfigurator
+19:22:44,644 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - Constructed configurator of type class ch.qos.logback.classic.util.DefaultJoranConfigurator
+19:22:44,645 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+19:22:44,649 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/Users/mael2/Downloads/Cours/$8/Bonnes%20pratiques/addressApp/address-app/infrastructure/build/resources/test/logback.xml]
+19:22:44,735 |-WARN in ch.qos.logback.core.joran.action.IncludeAction - Could not find resource corresponding to [/org/springframework/boot/logging/logback/base.xml]
+19:22:44,810 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [STDOUT]
+19:22:44,810 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+19:22:44,826 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+19:22:44,874 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to ERROR
+19:22:44,874 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [STDOUT] to Logger[ROOT]
+19:22:44,876 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@1cc680e - End of configuration.
+19:22:44,877 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@1dc3502b - Registering current configuration as safe fallback point
+19:22:44,877 |-INFO in ch.qos.logback.classic.util.ContextInitializer@561b7d53 - ch.qos.logback.classic.util.DefaultJoranConfigurator.configure() call lasted 233 milliseconds. ExecutionStatus=DO_NOT_INVOKE_NEXT_IF_ANY
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

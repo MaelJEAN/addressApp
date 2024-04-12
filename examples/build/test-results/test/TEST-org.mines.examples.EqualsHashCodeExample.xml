@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.mines.examples.EqualsHashCodeExample" tests="4" skipped="4" failures="0" errors="0" timestamp="2024-04-11T17:22:05" hostname="ORACLEDELL" time="0.004">
+  <properties/>
+  <testcase name="shouldGetSimpleObjectButFailsOnlyHashCode()" classname="org.mines.examples.EqualsHashCodeExample" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="shouldGetSimpleObjectButFails()" classname="org.mines.examples.EqualsHashCodeExample" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="shouldShowEqualsHashCode()" classname="org.mines.examples.EqualsHashCodeExample" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="shouldGetSimpleObjectButFailsOnlyEquals()" classname="org.mines.examples.EqualsHashCodeExample" time="0.001">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
