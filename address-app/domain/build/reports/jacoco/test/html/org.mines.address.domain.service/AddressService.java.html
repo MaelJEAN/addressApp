@@ -18,24 +18,24 @@ public class AddressService implements AddressUseCase {
     @Autowired
     private TownUseCase townUseCase;
 
-<span class="fc" id="L21">    public AddressService(AddressRepositoryPort addressRepositoryPort, TownUseCase townUseCase) {</span>
-<span class="fc" id="L22">        this.addressRepositoryPort = addressRepositoryPort;</span>
-<span class="fc" id="L23">        this.townUseCase = townUseCase;</span>
-<span class="fc" id="L24">    }</span>
+<span class="nc" id="L21">    public AddressService(AddressRepositoryPort addressRepositoryPort, TownUseCase townUseCase) {</span>
+<span class="nc" id="L22">        this.addressRepositoryPort = addressRepositoryPort;</span>
+<span class="nc" id="L23">        this.townUseCase = townUseCase;</span>
+<span class="nc" id="L24">    }</span>
 
     @Override
     public Address save(Address address) {
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if (address.town() == null</span>
-<span class="pc bpc" id="L29" title="1 of 2 branches missed.">                || address.town().id() == null</span>
-<span class="fc bfc" id="L30" title="All 2 branches covered.">                || townUseCase.get(address.town().id()).isEmpty()) {</span>
-<span class="fc" id="L31">            throw new IllegalArgumentException(&quot;Invalid town&quot;);</span>
-<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        } else if (address.street().isBlank()) {</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if (address.town() == null</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">                || address.town().id() == null</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">                || townUseCase.get(address.town().id()).isEmpty()) {</span>
+<span class="nc" id="L31">            throw new IllegalArgumentException(&quot;Invalid town&quot;);</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        } else if (address.street().isBlank()) {</span>
 <span class="nc" id="L33">            throw new IllegalArgumentException(&quot;street is required&quot;);</span>
-<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        } else if (address.number() &lt;= 0) {</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        } else if (address.number() &lt;= 0) {</span>
 <span class="nc" id="L35">            throw new IllegalArgumentException(&quot;invalid number&quot;);</span>
         }
 
-<span class="fc" id="L38">        return addressRepositoryPort.insert(address);</span>
+<span class="nc" id="L38">        return addressRepositoryPort.insert(address);</span>
     }
 
     @Override

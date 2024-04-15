@@ -10,11 +10,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ImplicationServiceTest {
@@ -25,16 +26,17 @@ class ImplicationServiceTest {
     @InjectMocks
     private ImplicationService implicationService = new ImplicationService(implicationRepositoryPort);
 
+    private final Person person = Person.PersonBuilder.aPerson().withFirstName("Mael").withLastName("Jean").withAge(22).build();
+    private final Group group = Group.GroupBuilder.aGroup().withName("Gourep").withDescription("C'est le gourep").build();
+
     @Test
     void shouldSaveAnImplication() {
         //GIVEN
-        Person person = Person.PersonBuilder.aPerson().withFirstName("Maël").withLastName("Jean").withAge(22).build();
-        Group group = Group.GroupBuilder.aGroup().withName("Gourep").withDescription("C'est le gourep").build();
         Implication implication = Implication.ImplicationBuilder.anImplication().withGroup(group).withPerson(person).withStatus("OK").build();
 
         UUID id = UUID.randomUUID();
         when(implicationRepositoryPort.insert(any())).thenReturn(
-          Implication.ImplicationBuilder.anImplication().withId(id).build()
+                Implication.ImplicationBuilder.anImplication().withId(id).build()
         );
 
         //WHEN
@@ -42,12 +44,32 @@ class ImplicationServiceTest {
 
         //THEN
         assertEquals(id, saved.id());
+
+        verifyNoMoreInteractions(implicationRepositoryPort);
+    }
+
+    @Test
+    void shouldNotSaveAnImplicationWithNullPerson() {
+        //GIVEN
+        Implication implication = Implication.ImplicationBuilder.anImplication().withPerson(null).withGroup(group).withStatus("OK").build();
+
+        // WHEN
+        assertThrows(IllegalArgumentException.class, () -> implicationService.save(implication));
+
+        verifyNoInteractions(implicationRepositoryPort);
     }
 
     @Test
     void getImplicationById() {
-        //GIVEN
+        UUID id = UUID.randomUUID();
+        Implication implication = Implication.ImplicationBuilder.anImplication().withGroup(group).withPerson(person).withStatus("OK").build();
+        when(implicationRepositoryPort.select(id)).thenReturn(Optional.of(implication));
+        Optional<Implication> implicationById = implicationService.getImplicationById(id);
 
+        assertTrue(implicationById.isPresent());
+        Implication returned = implicationById.get();
+
+        assertEquals(implication.group(), returned.group());
     }
 
     @Test

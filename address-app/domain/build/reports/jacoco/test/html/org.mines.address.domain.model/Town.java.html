@@ -3,7 +3,7 @@
 import java.util.Collection;
 import java.util.UUID;
 
-<span class="fc" id="L6">public record Town (UUID id, int postCode, String name, Collection&lt;Address&gt; addresses) {</span>
+<span class="nc" id="L6">public record Town (UUID id, int postCode, String name, Collection&lt;Address&gt; addresses) {</span>
 
     public static final class TownBuilder {
         private UUID id;
@@ -15,22 +15,22 @@ import java.util.UUID;
         }
 
         public static TownBuilder aTown() {
-<span class="fc" id="L18">            return new TownBuilder();</span>
+<span class="nc" id="L18">            return new TownBuilder();</span>
         }
 
         public TownBuilder withId(UUID id) {
-<span class="fc" id="L22">            this.id = id;</span>
-<span class="fc" id="L23">            return this;</span>
+<span class="nc" id="L22">            this.id = id;</span>
+<span class="nc" id="L23">            return this;</span>
         }
 
         public TownBuilder withPostCode(int postCode) {
-<span class="fc" id="L27">            this.postCode = postCode;</span>
-<span class="fc" id="L28">            return this;</span>
+<span class="nc" id="L27">            this.postCode = postCode;</span>
+<span class="nc" id="L28">            return this;</span>
         }
 
         public TownBuilder withName(String name) {
-<span class="fc" id="L32">            this.name = name;</span>
-<span class="fc" id="L33">            return this;</span>
+<span class="nc" id="L32">            this.name = name;</span>
+<span class="nc" id="L33">            return this;</span>
         }
 
         public TownBuilder withAddresses(Collection&lt;Address&gt; addresses) {
@@ -39,7 +39,7 @@ import java.util.UUID;
         }
 
         public Town build() {
-<span class="fc" id="L42">            return new Town(id, postCode, name, addresses);</span>
+<span class="nc" id="L42">            return new Town(id, postCode, name, addresses);</span>
         }
     }
 }

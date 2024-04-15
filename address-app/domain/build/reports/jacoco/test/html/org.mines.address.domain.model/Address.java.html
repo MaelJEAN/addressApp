@@ -2,7 +2,7 @@
 
 import java.util.UUID;
 
-<span class="fc" id="L5">public record Address(UUID id, int number, String street, Town town) {</span>
+<span class="nc" id="L5">public record Address(UUID id, int number, String street, Town town) {</span>
     public static final class AddressBuilder {
         private UUID id;
         private int number;
@@ -13,31 +13,31 @@ import java.util.UUID;
         }
 
         public static AddressBuilder anAddress() {
-<span class="fc" id="L16">            return new AddressBuilder();</span>
+<span class="nc" id="L16">            return new AddressBuilder();</span>
         }
 
         public AddressBuilder withId(UUID id) {
-<span class="fc" id="L20">            this.id = id;</span>
-<span class="fc" id="L21">            return this;</span>
+<span class="nc" id="L20">            this.id = id;</span>
+<span class="nc" id="L21">            return this;</span>
         }
 
         public AddressBuilder withNumber(int number) {
-<span class="fc" id="L25">            this.number = number;</span>
-<span class="fc" id="L26">            return this;</span>
+<span class="nc" id="L25">            this.number = number;</span>
+<span class="nc" id="L26">            return this;</span>
         }
 
         public AddressBuilder withStreet(String street) {
-<span class="fc" id="L30">            this.street = street;</span>
-<span class="fc" id="L31">            return this;</span>
+<span class="nc" id="L30">            this.street = street;</span>
+<span class="nc" id="L31">            return this;</span>
         }
 
         public AddressBuilder withTown(Town town) {
-<span class="fc" id="L35">            this.town = town;</span>
-<span class="fc" id="L36">            return this;</span>
+<span class="nc" id="L35">            this.town = town;</span>
+<span class="nc" id="L36">            return this;</span>
         }
 
         public Address build() {
-<span class="fc" id="L40">            return new Address(id, number, street, town);</span>
+<span class="nc" id="L40">            return new Address(id, number, street, town);</span>
         }
     }
 }

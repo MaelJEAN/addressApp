@@ -38,7 +38,7 @@ public class ImplicationService implements ImplicationUseCase {
 
     @Override
     public Optional<Implication> getImplicationById(UUID id) {
-        return Optional.empty();
+        return implicationRepositoryPort.select(id);
     }
 
     @Override
