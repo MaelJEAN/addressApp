@@ -2,13 +2,13 @@ package fr.mines.religion.domain.model;
 
 import java.util.UUID;
 
-public record Person(UUID id, String firstName, String lastName, int age, String gender) {
+public record Person(UUID id, String firstName, String lastName, Integer age, String gender) {
 
     public static final class PersonBuilder {
         private UUID id;
         private String firstName;
         private String lastName;
-        private int age;
+        private Integer age;
         private String gender;
 
         private PersonBuilder() {
@@ -33,7 +33,7 @@ public record Person(UUID id, String firstName, String lastName, int age, String
             return this;
         }
 
-        public PersonBuilder withAge(int age) {
+        public PersonBuilder withAge(Integer age) {
             this.age = age;
             return this;
         }

@@ -17,29 +17,4 @@ public class ImplicationService implements ImplicationUseCase {
     public Collection<String> listUsersByGroup(UUID groupId) {
         return List.of();
     }
-
-    @Override
-    public Collection<Implication> selectAll() {
-        return List.of();
-    }
-
-    @Override
-    public Implication select(UUID id) {
-        return null;
-    }
-
-    @Override
-    public Implication insert(Implication Implication) {
-        return null;
-    }
-
-    @Override
-    public Implication update(Implication Implication) {
-        return null;
-    }
-
-    @Override
-    public void delete(UUID uuid) {
-
-    }
 }
