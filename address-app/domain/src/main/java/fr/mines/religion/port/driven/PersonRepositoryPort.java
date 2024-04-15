@@ -8,6 +8,10 @@ import java.util.UUID;
 public interface PersonRepositoryPort {
     Collection<Person> selectAll();
 
+    Collection<Person> selectByGender(String gender);
+
+    Collection<Person> selectByAge(Integer age);
+
     Person select(UUID id);
 
     Person insert(Person person);
