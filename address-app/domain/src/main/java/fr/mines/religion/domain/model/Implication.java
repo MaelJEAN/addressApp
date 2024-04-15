@@ -1,8 +1,11 @@
 package fr.mines.religion.domain.model;
 
-public record Implication(String status, Group group, Person person) {
+import java.util.UUID;
+
+public record Implication(UUID id, String status, Group group, Person person) {
 
     public static final class ImplicationBuilder {
+        private UUID id;
         private String status;
         private Group group;
         private Person person;
@@ -12,6 +15,11 @@ public record Implication(String status, Group group, Person person) {
 
         public static ImplicationBuilder anImplication() {
             return new ImplicationBuilder();
+        }
+
+        public ImplicationBuilder withId(UUID id) {
+            this.id = id;
+            return this;
         }
 
         public ImplicationBuilder withStatus(String status) {
@@ -30,7 +38,7 @@ public record Implication(String status, Group group, Person person) {
         }
 
         public Implication build() {
-            return new Implication(status, group, person);
+            return new Implication(id, status, group, person);
         }
     }
 }

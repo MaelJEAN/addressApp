@@ -1,8 +1,11 @@
 package fr.mines.religion.domain.model;
 
-public record Person(String firstName, String lastName, int age, String gender) {
+import java.util.UUID;
+
+public record Person(UUID id, String firstName, String lastName, int age, String gender) {
 
     public static final class PersonBuilder {
+        private UUID id;
         private String firstName;
         private String lastName;
         private int age;
@@ -13,6 +16,11 @@ public record Person(String firstName, String lastName, int age, String gender) 
 
         public static PersonBuilder aPerson() {
             return new PersonBuilder();
+        }
+
+        public PersonBuilder withId(UUID id) {
+            this.id = id;
+            return this;
         }
 
         public PersonBuilder withFirstName(String firstName) {
@@ -36,7 +44,7 @@ public record Person(String firstName, String lastName, int age, String gender) 
         }
 
         public Person build() {
-            return new Person(firstName, lastName, age, gender);
+            return new Person(id, firstName, lastName, age, gender);
         }
     }
 }

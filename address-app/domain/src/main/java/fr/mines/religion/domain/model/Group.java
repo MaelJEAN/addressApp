@@ -1,8 +1,11 @@
 package fr.mines.religion.domain.model;
 
-public record Group(String name, String description) {
+import java.util.UUID;
+
+public record Group(UUID id, String name, String description) {
 
     public static final class GroupBuilder {
+        private UUID id;
         private String name;
         private String description;
 
@@ -11,6 +14,11 @@ public record Group(String name, String description) {
 
         public static GroupBuilder aGroup() {
             return new GroupBuilder();
+        }
+
+        public GroupBuilder withId(UUID id) {
+            this.id = id;
+            return this;
         }
 
         public GroupBuilder withName(String name) {
@@ -24,7 +32,7 @@ public record Group(String name, String description) {
         }
 
         public Group build() {
-            return new Group(name, description);
+            return new Group(id, name, description);
         }
     }
 }
