@@ -1,6 +1,6 @@
 package fr.mines.religion.domain.model;
 
-public record Religion(String truc, Group group) implements HasGroup{
+public record Religion(String beliefs, Group group) implements HasGroup{
 
     @Override
     public Group getGroup() {
@@ -8,7 +8,7 @@ public record Religion(String truc, Group group) implements HasGroup{
     }
 
     public static final class ReligionBuilder {
-        private String truc;
+        private String beliefs;
         private Group group;
 
         private ReligionBuilder() {
@@ -18,8 +18,8 @@ public record Religion(String truc, Group group) implements HasGroup{
             return new ReligionBuilder();
         }
 
-        public ReligionBuilder withTruc(String truc) {
-            this.truc = truc;
+        public ReligionBuilder withBeliefs(String beliefs) {
+            this.beliefs = beliefs;
             return this;
         }
 
@@ -29,7 +29,7 @@ public record Religion(String truc, Group group) implements HasGroup{
         }
 
         public Religion build() {
-            return new Religion(truc, group);
+            return new Religion(beliefs, group);
         }
     }
 }
