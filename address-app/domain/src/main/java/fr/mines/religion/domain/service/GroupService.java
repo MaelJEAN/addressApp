@@ -9,28 +9,4 @@ import java.util.UUID;
 
 public class GroupService implements GroupUseCase {
 
-    @Override
-    public Collection<Group> selectAll() {
-        return List.of();
-    }
-
-    @Override
-    public Group select(UUID id) {
-        return null;
-    }
-
-    @Override
-    public Group insert(Group group) {
-        return null;
-    }
-
-    @Override
-    public Group update(Group group) {
-        return null;
-    }
-
-    @Override
-    public void delete(UUID uuid) {
-
-    }
 }
