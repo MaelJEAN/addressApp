@@ -28,6 +28,8 @@ class ImplicationServiceTest {
     @Test
     void shouldSaveAnImplication() {
         //GIVEN
+        Person person = Person.PersonBuilder.aPerson().withFirstName("Maël").withLastName("Jean").withAge(22).build();
+        Group group = Group.GroupBuilder.aGroup().withName("Gourep").withDescription("C'est le gourep").build();
         Implication implication = Implication.ImplicationBuilder.anImplication().withGroup(group).withPerson(person).withStatus("OK").build();
 
         UUID id = UUID.randomUUID();
