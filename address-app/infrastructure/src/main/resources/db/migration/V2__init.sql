@@ -1,5 +1,5 @@
-create table group (id uuid PRIMARY KEY, name text, description text, type text, region text, position text, beliefs text);
+create table groups (id UUID PRIMARY KEY, name text, description text, type text, region text, position text, beliefs text);
 
-create table person(id uuid PRIMARY KEY, firstName text, lastName text, age NUMERIC, gender text);
+create table person(id UUID PRIMARY KEY, firstName text, lastName text, age NUMERIC, gender text);
 
-create table implication(id uuid PRIMARY KEY , status text, group uuid REFERENCES group(id), person uuid REFERENCES person(id));
+create table implication(id UUID PRIMARY KEY , status text, group_id UUID REFERENCES groups(id), person_id UUID REFERENCES person(id));
