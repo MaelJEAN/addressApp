@@ -3,6 +3,7 @@ package fr.mines.religion.port.driven;
 import fr.mines.religion.domain.model.Person;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface PersonRepositoryPort {
@@ -12,7 +13,7 @@ public interface PersonRepositoryPort {
 
     Collection<Person> selectByAge(Integer age);
 
-    Person select(UUID id);
+    Optional<Person> select(UUID id);
 
     Person insert(Person person);
 
