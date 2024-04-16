@@ -6,6 +6,7 @@ import fr.mines.religion.port.driven.PersonRepositoryPort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mines.address.domain.model.Address;
+import org.mines.address.domain.model.Town;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -30,7 +31,9 @@ class PersonRepositoryAdapterTest {
 
     @Test
     void shouldFindAll() {
+        Collection<Person> all = personRepositoryPort.selectAll();
 
+        assertEquals(1, all.size());
     }
 
     @Test
@@ -80,6 +83,7 @@ class PersonRepositoryAdapterTest {
     }
 
     @Test
-    void delete() {
+    void shouldDeleteAPersonAndAllItsImplications() {
+        personRepositoryPort.delete(UUID.fromString("fb74d086-5a4a-11e7-907b-a6006ad3dba0"));
     }
 }

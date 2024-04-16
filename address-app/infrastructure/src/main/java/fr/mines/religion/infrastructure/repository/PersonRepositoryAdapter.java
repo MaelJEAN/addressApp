@@ -69,7 +69,7 @@ public class PersonRepositoryAdapter implements PersonRepositoryPort {
 
     @Override
     public void delete(UUID uuid) {
-        jdbcTemplate.update("delete from group where person=?", uuid);
+        jdbcTemplate.update("delete from implication where person_id=?", uuid);
         jdbcTemplate.update("delete from person where id=?", uuid);
     }
 }
