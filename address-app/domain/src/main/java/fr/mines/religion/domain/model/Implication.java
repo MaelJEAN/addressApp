@@ -2,12 +2,12 @@ package fr.mines.religion.domain.model;
 
 import java.util.UUID;
 
-public record Implication(UUID id, String status, Group group, Person person) {
+public record Implication(UUID id, String status, HasGroup hasGroup, Person person) {
 
     public static final class ImplicationBuilder {
         private UUID id;
         private String status;
-        private Group group;
+        private HasGroup hasGroup;
         private Person person;
 
         private ImplicationBuilder() {
@@ -27,8 +27,8 @@ public record Implication(UUID id, String status, Group group, Person person) {
             return this;
         }
 
-        public ImplicationBuilder withGroup(Group group) {
-            this.group = group;
+        public ImplicationBuilder withHasGroup(HasGroup hasGroup) {
+            this.hasGroup = hasGroup;
             return this;
         }
 
@@ -38,7 +38,7 @@ public record Implication(UUID id, String status, Group group, Person person) {
         }
 
         public Implication build() {
-            return new Implication(id, status, group, person);
+            return new Implication(id, status, hasGroup, person);
         }
     }
 }

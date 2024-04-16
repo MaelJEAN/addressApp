@@ -1,6 +1,6 @@
 package fr.mines.religion.port.driving;
 
-import fr.mines.religion.domain.model.Group;
+import fr.mines.religion.domain.model.HasGroup;
 import fr.mines.religion.domain.model.Implication;
 import fr.mines.religion.domain.model.Person;
 
@@ -12,6 +12,6 @@ public interface ImplicationUseCase {
     Implication save(Implication implication);
     Optional<Implication> getImplicationById(UUID id);
     
-    Collection<Group> getGroupsListByUserId(UUID userId);
-    Collection<Person> getPersonsListByGroupId(UUID groupId);
+    Collection<HasGroup> getHasGroupsListByUserId(UUID userId);
+    Collection<Person> getPersonsListByHasGroupId(UUID hasGroupId);
 }

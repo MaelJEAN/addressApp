@@ -1,6 +1,6 @@
 package fr.mines.religion.domain.service;
 
-import fr.mines.religion.domain.model.Group;
+import fr.mines.religion.domain.model.HasGroup;
 import fr.mines.religion.domain.model.Implication;
 import fr.mines.religion.domain.model.Person;
 import fr.mines.religion.port.driven.ImplicationRepositoryPort;
@@ -19,8 +19,8 @@ public class ImplicationService implements ImplicationUseCase {
 
     @Override
     public Implication save(Implication implication) {
-        if (implication.group() == null) {
-            throw new IllegalArgumentException("Group is required");
+        if (implication.hasGroup() == null) {
+            throw new IllegalArgumentException("HasGroup is required");
         }
         if (implication.person() == null) {
             throw new IllegalArgumentException("Person is required");
@@ -42,26 +42,26 @@ public class ImplicationService implements ImplicationUseCase {
     }
 
     @Override
-    public Collection<Group> getGroupsListByUserId(UUID userId) {
-        List<Group> groupsList = new ArrayList<>();
+    public Collection<HasGroup> getHasGroupsListByUserId(UUID userId) {
+        List<HasGroup> hasGroupsList = new ArrayList<>();
         List<Implication> userImplications = implicationRepositoryPort
                 .selectAll()
                 .stream()
                 .filter(implication -> implication.person().id().equals(userId))
                 .toList();
         for(Implication implication : userImplications){
-            groupsList.add(implication.group());
+            hasGroupsList.add(implication.hasGroup());
         }
-        return groupsList;
+        return hasGroupsList;
     }
 
     @Override
-    public Collection<Person> getPersonsListByGroupId(UUID groupId) {
+    public Collection<Person> getPersonsListByHasGroupId(UUID hasGroupId) {
         List<Person> personsList = new ArrayList<>();
         List<Implication> userImplications = implicationRepositoryPort
                 .selectAll()
                 .stream()
-                .filter(implication -> implication.group().id().equals(groupId))
+                .filter(implication -> implication.hasGroup().getGroup().id().equals(hasGroupId))
                 .toList();
         for(Implication implication : userImplications){
             personsList.add(implication.person());
