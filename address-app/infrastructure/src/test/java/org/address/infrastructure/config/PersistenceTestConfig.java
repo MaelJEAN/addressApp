@@ -1,4 +1,4 @@
-package fr.mines.religion.infrastructure.config;
+package org.address.infrastructure.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.flywaydb.core.Flyway;
@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"fr.mines", "org.mines"})
+@ComponentScan("org.mines")
 public class PersistenceTestConfig {
 
     @Bean

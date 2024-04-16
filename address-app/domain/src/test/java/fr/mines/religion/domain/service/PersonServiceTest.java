@@ -87,16 +87,16 @@ class PersonServiceTest {
     void getPersonById() {
         UUID id = UUID.randomUUID();
         Person person = Person.PersonBuilder.aPerson().withFirstName("Gourep").withLastName("C'est le gourep").withAge(32).withGender("male").build();
-        when(personRepositoryPort.select(id)).thenReturn(person);
-        Optional<Person> personById = personService.getPersonById(id);
+        when(personRepositoryPort.select(id)).thenReturn(Optional.of(person));
+        Optional<Optional<Person>> personById = personService.getPersonById(id);
 
         assertTrue(personById.isPresent());
-        Person returned = personById.get();
+        Optional<Person> returned = personById.get();
 
-        assertEquals(person.lastName(), returned.lastName());
-        assertEquals(person.firstName(), returned.firstName());
-        assertEquals(person.age(), returned.age());
-        assertEquals(person.gender(), returned.gender());
+        assertEquals(person.lastName(), returned.get().lastName());
+        assertEquals(person.firstName(), returned.get().firstName());
+        assertEquals(person.age(), returned.get().age());
+        assertEquals(person.gender(), returned.get().gender());
     }
 
     

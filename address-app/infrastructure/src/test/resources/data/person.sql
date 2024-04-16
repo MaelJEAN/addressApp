@@ -1,1 +1,0 @@
-insert into person(id, firstName, lastName, age, gender) VALUES (uuid('fb74d086-5a4a-11e7-907b-a6006ad3dba0'), 'Mael', 'Jean', 22, 'male');

@@ -1,6 +1,7 @@
-package org.address.infrastructure;
+package fr.mines.religion.infrastructure.repository;
 
-
+import fr.mines.religion.domain.model.HasGroup;
+import fr.mines.religion.port.driven.HasGroupRepositoryPort;
 import org.address.infrastructure.config.PersistenceTestConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,37 +17,46 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import java.util.Collection;
-import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @TestExecutionListeners({SqlScriptsTestExecutionListener.class, TransactionalTestExecutionListener.class, DependencyInjectionTestExecutionListener.class})
 @ContextConfiguration(classes = {PersistenceTestConfig.class})
-@Sql(scripts = {"/data/clear.sql", "/data/town.sql"})
-class TownRepositoryAdapterTest {
+@Sql(scripts = {"/data/clear.sql", "/data/groups.sql"})
+class HasGroupRepositoryAdapterTest {
 
     @Autowired
-    private TownRepositoryPort townRepository;
+    private HasGroupRepositoryPort hasGroupRepository;
 
-//    @BeforeEach
-//    @Transactional
-//    @Rollback(false)
-//    public void fixtureData() {
-//        Town town = Town.TownBuilder.aTown().withName("name").build();
-//        townRepository.insert(town);
-//    }
+    @Test
+    void selectAll() {
+    }
+
+    @Test
+    void select() {
+    }
+
+    @Test
+    void selectByName() {
+    }
+
+    @Test
+    void insert() {
+    }
+
+    @Test
+    void update() {
+    }
+
+    @Test
+    void delete() {
+    }
 
     @Test
     public void shouldFindAll() {
-        Collection<Town> all = townRepository.selectAll();
+        Collection<HasGroup> all = hasGroupRepository.selectAll();
 
         assertEquals(1, all.size());
     }
-
-    @Test
-    void shouldDeleteATownAndAllItsAddresses() {
-        townRepository.delete(UUID.fromString("fb74d086-5a4a-11e7-907b-a6006ad3dba0"));
-    }
-
 }
