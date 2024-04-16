@@ -1,10 +1,10 @@
 package fr.mines.religion.domain.service;
 
 import fr.mines.religion.domain.model.Group;
-import fr.mines.religion.domain.model.Implication;
+import fr.mines.religion.domain.model.Group;
 import fr.mines.religion.domain.model.Person;
 import fr.mines.religion.port.driven.GroupRepositoryPort;
-import fr.mines.religion.port.driven.ImplicationRepositoryPort;
+import fr.mines.religion.port.driven.GroupRepositoryPort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mines.address.domain.model.Town;
@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -84,5 +85,18 @@ class GroupServiceTest {
     }
 
 
+    @Test
+    void getGroupById() {
+        UUID id = UUID.randomUUID();
+        Group group = Group.GroupBuilder.aGroup().withName("alreadyPresent").withDescription("C'est le gourep").build();
+        when(groupRepositoryPort.select(id)).thenReturn(group);
+        Optional<Group> groupById = groupService.getGroupById(id);
+
+        assertTrue(groupById.isPresent());
+        Group returned = groupById.get();
+
+        assertEquals(group.name(), returned.name());
+        assertEquals(group.description(), returned.description());
+    }
 
 }

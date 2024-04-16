@@ -34,7 +34,7 @@ public class PersonService implements PersonUseCase {
         if (person.age() <= 0 || person.age() >= 130 ) {
             throw new IllegalArgumentException("Person age is required");
         }
-        if (person.gender() != "male" || person.gender() != "female") {
+        if (person.gender() != "male" && person.gender() != "female") {
             throw new IllegalArgumentException("Person gender is required");
         }
 
