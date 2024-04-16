@@ -47,14 +47,14 @@ public class ImplicationRepositoryAdapter implements ImplicationRepositoryPort {
 
         final SqlParameterSource in = new MapSqlParameterSource()
                 .addValue("id", uuid)
-                .addValue("group_id", implication.group().id())
+                .addValue("group_id", implication.hasGroup().getGroup().id())
                 .addValue("person_id", implication.person().id())
                 .addValue("status", implication.status());
         simpleJdbcInsert.execute(in);
 
         return Implication.ImplicationBuilder.anImplication()
                 .withId(uuid)
-                .withGroup(implication.group())
+                .withHasGroup(implication.hasGroup())
                 .withPerson(implication.person())
                 .withStatus(implication.status())
                 .build();
@@ -62,7 +62,7 @@ public class ImplicationRepositoryAdapter implements ImplicationRepositoryPort {
 
     @Override
     public Implication update(Implication implication) {
-        jdbcTemplate.update("update implication set group_id = ?, person_id = ?, status = ? where id = ?", implication.group().id(), implication.person().id(), implication.status(), implication.id());
+        jdbcTemplate.update("update implication set group_id = ?, person_id = ?, status = ? where id = ?", implication.hasGroup().getGroup().id(), implication.person().id(), implication.status(), implication.id());
         return implication;
     }
 
