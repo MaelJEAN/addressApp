@@ -5,6 +5,7 @@ import fr.mines.religion.infrastructure.config.PersistenceTestConfig;
 import fr.mines.religion.port.driven.PersonRepositoryPort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mines.address.domain.model.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
+import java.util.Collection;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,6 +30,7 @@ class PersonRepositoryAdapterTest {
 
     @Test
     void shouldFindAll() {
+
     }
 
     @Test
@@ -63,6 +66,13 @@ class PersonRepositoryAdapterTest {
         assertEquals("Jean", persisted.lastName());
         assertEquals(22, persisted.age());
         assertEquals("male", persisted.gender());
+
+        Collection<Person> persons = personRepositoryPort.selectAll();
+        assertEquals(2, persons.size());
+        assertEquals("Mael", persons.stream()
+                .filter(entry -> entry.id().equals(persisted.id()))
+                .findFirst()
+                .map(Person::firstName).orElse(""));
     }
 
     @Test
