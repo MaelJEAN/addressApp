@@ -1,12 +1,10 @@
-package fr.mines.religion.infrastructure.repository;
+package fr.mines.religion.infrastructure;
 
 import fr.mines.religion.domain.model.HasGroup;
 import fr.mines.religion.port.driven.HasGroupRepositoryPort;
-import org.address.infrastructure.config.PersistenceTestConfig;
+import fr.mines.religion.infrastructure.config.PersistenceTestConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mines.address.domain.model.Town;
-import org.mines.address.port.driven.TownRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;

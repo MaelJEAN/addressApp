@@ -1,11 +1,10 @@
 package fr.mines.religion.infrastructure;
 
 import fr.mines.religion.domain.model.Person;
-import fr.mines.religion.infrastructure.config.PersistenceTestConfig;
 import fr.mines.religion.port.driven.PersonRepositoryPort;
+import fr.mines.religion.infrastructure.config.PersistenceTestConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mines.address.domain.model.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;

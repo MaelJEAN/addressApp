@@ -64,7 +64,7 @@ public class HasGroupRepositoryAdapter implements HasGroupRepositoryPort {
                 .addValue("name", hasGroup.getGroup().name())
                 .addValue("description", hasGroup.getGroup().description())
                 .addValue("type", hasGroup.getGroup().type())
-                .addValue("belief", beliefs)
+                .addValue("beliefs", beliefs)
                 .addValue("region", region)
                 .addValue("position", position);
 

@@ -27,7 +27,7 @@ public class HasGroupRowMapper implements RowMapper<HasGroup>{
             case "religion" ->
                     hasGroup = Religion.ReligionBuilder.aReligion()
                     .withGroup(group)
-                    .withBeliefs(rs.getString("belief"))
+                    .withBeliefs(rs.getString("beliefs"))
                     .build();
             case "origin" ->
                     hasGroup = Origin.OriginBuilder.anOrigin()
