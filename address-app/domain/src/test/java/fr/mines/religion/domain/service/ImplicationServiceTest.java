@@ -70,6 +70,8 @@ class ImplicationServiceTest {
         Implication returned = implicationById.get();
 
         assertEquals(implication.group(), returned.group());
+        assertEquals(implication.person(), returned.person());
+        assertEquals(implication.status(), returned.status());
     }
 
     @Test

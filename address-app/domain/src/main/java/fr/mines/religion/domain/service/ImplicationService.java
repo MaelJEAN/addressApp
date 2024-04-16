@@ -1,15 +1,15 @@
 package fr.mines.religion.domain.service;
 
+import fr.mines.religion.domain.model.Group;
 import fr.mines.religion.domain.model.Implication;
+import fr.mines.religion.domain.model.Person;
 import fr.mines.religion.port.driven.ImplicationRepositoryPort;
 import fr.mines.religion.port.driving.ImplicationUseCase;
 import org.mines.address.port.driven.TownRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ImplicationService implements ImplicationUseCase {
     @Autowired
@@ -42,12 +42,30 @@ public class ImplicationService implements ImplicationUseCase {
     }
 
     @Override
-    public Collection<String> getGroupsListByUserId(UUID userId) {
-        return List.of();
+    public Collection<Group> getGroupsListByUserId(UUID userId) {
+        List<Group> groupsList = new ArrayList<>();
+        List<Implication> userImplications = implicationRepositoryPort
+                .selectAll()
+                .stream()
+                .filter(implication -> implication.person().id().equals(userId))
+                .toList();
+        for(Implication implication : userImplications){
+            groupsList.add(implication.group());
+        }
+        return groupsList;
     }
 
     @Override
-    public Collection<String> getPersonsListByGroupId(UUID groupId) {
-        return List.of();
+    public Collection<Person> getPersonsListByGroupId(UUID groupId) {
+        List<Person> personsList = new ArrayList<>();
+        List<Implication> userImplications = implicationRepositoryPort
+                .selectAll()
+                .stream()
+                .filter(implication -> implication.group().id().equals(groupId))
+                .toList();
+        for(Implication implication : userImplications){
+            personsList.add(implication.person());
+        }
+        return personsList;
     }
 }
