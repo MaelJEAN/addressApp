@@ -1,7 +1,7 @@
 package org.address.infrastructure;
 
 
-import org.address.infrastructure.config.PersistenceTestConfig;
+import fr.mines.religion.infrastructure.config.PersistenceTestConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mines.address.domain.model.Town;

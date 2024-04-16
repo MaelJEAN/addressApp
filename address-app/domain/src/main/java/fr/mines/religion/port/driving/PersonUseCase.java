@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface PersonUseCase {
     Person save(Person person);
 
-    Optional<Person> getPersonById(UUID uuid);
+    Optional<Optional<Person>> getPersonById(UUID uuid);
 
     Collection<Person> getList();
     Collection<Person> getListByGender(String gender);

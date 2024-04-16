@@ -3,12 +3,10 @@ package fr.mines.religion.domain.service;
 import fr.mines.religion.domain.model.Person;
 import fr.mines.religion.port.driven.PersonRepositoryPort;
 import fr.mines.religion.port.driving.PersonUseCase;
-import org.mines.address.domain.model.Town;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -55,7 +53,7 @@ public class PersonService implements PersonUseCase {
     }
 
     @Override
-    public Optional<Person> getPersonById(UUID uuid) {
+    public Optional<Optional<Person>> getPersonById(UUID uuid) {
         return Optional.ofNullable(personRepositoryPort.select(uuid));
     }
 
