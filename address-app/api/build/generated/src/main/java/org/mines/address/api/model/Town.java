@@ -18,7 +18,7 @@ import javax.annotation.Generated;
  * Town
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-04-12T14:29:23.944830900+02:00[Europe/Paris]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-04-17T10:11:12.461283500+02:00[Europe/Paris]")
 public class Town {
 
   private String id;

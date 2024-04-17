@@ -146,6 +146,99 @@ paths:
               schema:
                 $ref: "#/components/schemas/Address"
 
+  /person:
+    get:
+      summary: List all persons
+      operationId: listPersons
+      tags:
+        - person
+      responses:
+        '200':
+          description: An array of persons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+    post:
+      summary: Create a person
+      operationId: createPerson
+      tags:
+        - person
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '201':
+          description: Null response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+    put:
+      summary: Update a person
+      operationId: updatePerson
+      tags:
+        - person
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '200':
+          description: Null response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+  /person/{id}:
+    get:
+      summary: Info for a specific person
+      operationId: getPerson
+      tags:
+        - person
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the person to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Person"
+    delete:
+      tags:
+        - person
+      summary: Delete a person.
+      operationId: deletePerson
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '204':
+          description: Person has been deleted.
+          content:
+            application/json:
+              schema:
+                type: string
+                description: ID of the deleted entity.
+
+
+
 components:
   schemas:
     Town:
@@ -168,4 +261,22 @@ components:
           type: integer
           format: int64
         street:
+          type: string
+    Person:
+      required:
+        - firstName
+        - lastName
+        - age
+        - gender
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        age:
+          type: integer
+          format: int32
+        gender:
           type: string

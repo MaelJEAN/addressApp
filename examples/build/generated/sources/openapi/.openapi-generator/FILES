@@ -1,6 +1,5 @@
 .github/workflows/maven.yml
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -8,6 +7,8 @@ build.gradle
 build.sbt
 docs/Address.md
 docs/AddressApi.md
+docs/Person.md
+docs/PersonApi.md
 docs/Town.md
 docs/TownApi.md
 git_push.sh
@@ -26,14 +27,12 @@ java/main/org/openapitools/client/RFC3339DateFormat.java
 java/main/org/openapitools/client/ServerConfiguration.java
 java/main/org/openapitools/client/ServerVariable.java
 java/main/org/openapitools/client/api/AddressApi.java
+java/main/org/openapitools/client/api/PersonApi.java
 java/main/org/openapitools/client/api/TownApi.java
 java/main/org/openapitools/client/model/AbstractOpenApiSchema.java
 java/main/org/openapitools/client/model/Address.java
+java/main/org/openapitools/client/model/Person.java
 java/main/org/openapitools/client/model/Town.java
 pom.xml
 settings.gradle
 src/main/AndroidManifest.xml
-src/test/java/org/openapitools/client/api/AddressApiTest.java
-src/test/java/org/openapitools/client/api/TownApiTest.java
-src/test/java/org/openapitools/client/model/AddressTest.java
-src/test/java/org/openapitools/client/model/TownTest.java

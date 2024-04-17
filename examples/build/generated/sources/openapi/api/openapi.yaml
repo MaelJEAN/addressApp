@@ -162,6 +162,107 @@ paths:
       - address
       x-content-type: application/json
       x-accepts: application/json
+  /person:
+    get:
+      operationId: listPersons
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Person'
+                type: array
+          description: An array of persons
+      summary: List all persons
+      tags:
+      - person
+      x-accepts: application/json
+    post:
+      operationId: createPerson
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+          description: Null response
+      summary: Create a person
+      tags:
+      - person
+      x-content-type: application/json
+      x-accepts: application/json
+    put:
+      operationId: updatePerson
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+          description: Null response
+      summary: Update a person
+      tags:
+      - person
+      x-content-type: application/json
+      x-accepts: application/json
+  /person/{id}:
+    delete:
+      operationId: deletePerson
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          content:
+            application/json:
+              schema:
+                description: ID of the deleted entity.
+                type: string
+          description: Person has been deleted.
+      summary: Delete a person.
+      tags:
+      - person
+      x-accepts: application/json
+    get:
+      operationId: getPerson
+      parameters:
+      - description: The id of the person to retrieve
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+          description: Expected response to a valid request
+      summary: Info for a specific person
+      tags:
+      - person
+      x-accepts: application/json
 components:
   schemas:
     Town:
@@ -192,4 +293,28 @@ components:
       required:
       - number
       - street
+    Person:
+      example:
+        firstName: firstName
+        lastName: lastName
+        gender: gender
+        id: id
+        age: 0
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        age:
+          format: int64
+          type: integer
+        gender:
+          type: string
+      required:
+      - age
+      - firstName
+      - gender
+      - lastName
 

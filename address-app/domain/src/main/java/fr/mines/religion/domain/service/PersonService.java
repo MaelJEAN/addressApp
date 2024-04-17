@@ -53,8 +53,8 @@ public class PersonService implements PersonUseCase {
     }
 
     @Override
-    public Optional<Optional<Person>> getPersonById(UUID uuid) {
-        return Optional.ofNullable(personRepositoryPort.select(uuid));
+    public Optional<Person> getPersonById(UUID uuid) {
+        return personRepositoryPort.select(uuid);
     }
 
     @Override

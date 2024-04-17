@@ -18,29 +18,29 @@ public class TownService implements TownUseCase {
     @Autowired
     private TownRepositoryPort townRepositoryPort;
 
-<span class="nc" id="L21">    public TownService(TownRepositoryPort townRepositoryPort) {</span>
-<span class="nc" id="L22">        this.townRepositoryPort = townRepositoryPort;</span>
-<span class="nc" id="L23">    }</span>
+<span class="fc" id="L21">    public TownService(TownRepositoryPort townRepositoryPort) {</span>
+<span class="fc" id="L22">        this.townRepositoryPort = townRepositoryPort;</span>
+<span class="fc" id="L23">    }</span>
 
     @Override
     @Transactional
     public Town save(Town town) {
-<span class="nc bnc" id="L28" title="All 4 branches missed.">        if (town.name() == null || town.name().isEmpty()) {</span>
-<span class="nc" id="L29">            throw new IllegalArgumentException(&quot;Town name is required&quot;);</span>
+<span class="pc bpc" id="L28" title="1 of 4 branches missed.">        if (town.name() == null || town.name().isEmpty()) {</span>
+<span class="fc" id="L29">            throw new IllegalArgumentException(&quot;Town name is required&quot;);</span>
         }
 
         // This is a validation example: the rule should probably be relaxed
         // as multiple towns can have the same name
-<span class="nc" id="L34">        if (townRepositoryPort</span>
-<span class="nc" id="L35">                .selectAll()</span>
-<span class="nc" id="L36">                .stream()</span>
-<span class="nc bnc" id="L37" title="All 6 branches missed.">                .anyMatch(persisted -&gt; persisted.name().equalsIgnoreCase(town.name()) &amp;&amp; persisted.id() != town.id())</span>
+<span class="fc" id="L34">        if (townRepositoryPort</span>
+<span class="fc" id="L35">                .selectAll()</span>
+<span class="fc" id="L36">                .stream()</span>
+<span class="pc bpc" id="L37" title="2 of 6 branches missed.">                .anyMatch(persisted -&gt; persisted.name().equalsIgnoreCase(town.name()) &amp;&amp; persisted.id() != town.id())</span>
         ) {
-<span class="nc" id="L39">            throw new IllegalArgumentException(&quot;Town name already exists&quot;);</span>
+<span class="fc" id="L39">            throw new IllegalArgumentException(&quot;Town name already exists&quot;);</span>
         }
 
-<span class="nc bnc" id="L42" title="All 2 branches missed.">        if (town.id() == null) {</span>
-<span class="nc" id="L43">            return townRepositoryPort.insert(town);</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (town.id() == null) {</span>
+<span class="fc" id="L43">            return townRepositoryPort.insert(town);</span>
         } else {
 <span class="nc" id="L45">            return townRepositoryPort.update(town);</span>
         }
@@ -59,7 +59,7 @@ public class TownService implements TownUseCase {
     @Override
     @Transactional
     public void remove(UUID uuid) {
-<span class="nc" id="L62">        townRepositoryPort.delete(uuid);</span>
-<span class="nc" id="L63">    }</span>
+<span class="fc" id="L62">        townRepositoryPort.delete(uuid);</span>
+<span class="fc" id="L63">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
