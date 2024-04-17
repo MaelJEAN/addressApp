@@ -1,5 +1,6 @@
 package org.mines.address.web.config;
 
+import fr.mines.religion.port.driving.ImplicationUseCase;
 import fr.mines.religion.port.driving.PersonUseCase;
 import org.mines.address.port.driving.AddressUseCase;
 import org.mines.address.port.driving.TownUseCase;
@@ -18,4 +19,7 @@ public class WebTestConfig {
 
     @MockBean
     private PersonUseCase personUseCase;
+
+    @MockBean
+    private ImplicationUseCase implicationUseCase;
 }

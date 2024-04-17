@@ -236,6 +236,26 @@ paths:
               schema:
                 type: string
                 description: ID of the deleted entity.
+  /implication/{id}:
+    get:
+      summary: Info for a specific implication
+      operationId: getImplication
+      tags:
+        - implication
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the implication to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Implication"
 
 
 
@@ -280,3 +300,60 @@ components:
           format: int32
         gender:
           type: string
+    Implication:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the implication
+        status:
+          type: string
+          description: Status of the implication
+        hasGroup:
+          oneOf:
+            - $ref: '#/components/schemas/Origin'
+            - $ref: '#/components/schemas/Politic'
+            - $ref: '#/components/schemas/Religion'
+        person:
+          $ref: '#/components/schemas/Person'
+    Origin:
+      type: object
+      properties:
+        region:
+          type: string
+          description: Region associated with the origin
+        group:
+          $ref: '#/components/schemas/Group'
+    Politic:
+      type: object
+      properties:
+        position:
+          type: string
+          description: Position associated with the politic
+        group:
+          $ref: '#/components/schemas/Group'
+    Religion:
+      type: object
+      properties:
+        beliefs:
+          type: string
+          description: Beliefs associated with the religion
+        group:
+          $ref: '#/components/schemas/Group'
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the group
+        name:
+          type: string
+          description: Name of the group
+        description:
+          type: string
+          description: Description of the group
+        type:
+          type: string
+          description: Type of the group
